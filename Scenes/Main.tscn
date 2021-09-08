@@ -1,0 +1,95 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/Grid.gd" type="Script" id=1]
+[ext_resource path="res://Images/black blue gradient background.jpg" type="Texture" id=2]
+[ext_resource path="res://Images/dark and light tiles v2.png" type="Texture" id=3]
+[ext_resource path="res://Misc/PrincessSofia-Regular.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="TileSet" id=1]
+0/name = "dark and light tiles v2.png 0"
+0/texture = ExtResource( 3 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 1280, 128 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 128, 128 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+outline_size = 2
+font_data = ExtResource( 4 )
+
+[node name="Main" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 1000.0
+margin_bottom = 700.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 1000, 700 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridBackground" type="TileMap" parent="."]
+position = Vector2( 244, 94 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( -1, 0, 6, -65536, 0, 2, -65535, 0, 2, -65534, 0, 2, -65533, 0, 2, -65532, 0, 9, 65535, 0, 3, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 5, 131071, 0, 3, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 5, 196607, 0, 3, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 5, 262143, 0, 3, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 5, 327679, 0, 7, 262144, 0, 4, 262145, 0, 4, 262146, 0, 4, 262147, 0, 4, 262148, 0, 8 )
+
+[node name="Grid" type="TileMap" parent="."]
+position = Vector2( 244, 94 )
+cell_size = Vector2( 128, 128 )
+format = 1
+script = ExtResource( 1 )
+
+[node name="Foreground" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 1000.0
+margin_bottom = 700.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 1000, 700 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverLabel" type="Label" parent="."]
+visible = false
+margin_right = 1000.0
+margin_bottom = 700.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 1000, 700 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.0392157, 0, 0.588235, 1 )
+text = "Game Over
+Press R to Play Again"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverTween" type="Tween" parent="."]
